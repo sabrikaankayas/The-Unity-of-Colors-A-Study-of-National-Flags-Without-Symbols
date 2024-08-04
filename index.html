@@ -17,6 +17,7 @@
         margin: 0;
         padding: 20px;
         overflow: hidden;
+        position: relative;
       }
 
       h1 {
@@ -54,6 +55,28 @@
         background-color: #555;
       }
 
+      /* Dil seçici */
+      .language-selector {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        display: flex;
+      }
+
+      .language-selector img {
+        width: 40px;
+        height: 28px;
+        margin-left: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 5px;
+      }
+
+      .language-selector img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
       /* Fade-out animation */
       .fade-out {
         animation: fadeOut 1s forwards;
@@ -71,12 +94,17 @@
     </style>
   </head>
   <body>
-    <h1>The Unity of Colors</h1>
-    <p>
+    <div class="language-selector">
+      <img id="btnTurkish" src="flags/tr.png" alt="Türkçe" />
+      <img id="btnEnglish" src="flags/gb.png" alt="English" />
+    </div>
+
+    <h1 id="title">The Unity of Colors</h1>
+    <p id="artistInfo">
       <strong>Artist:</strong> Kaan Kayaş <br />
       <strong>Date:</strong> 2024
     </p>
-    <p>
+    <p id="manifesto">
       Bayraklar, ulusal kimliklerin en güçlü simgelerindendir. Her bir bayrak,
       bir ülkenin tarihini, kültürünü ve değerlerini yansıtan renkler ve
       sembollerle bezenmiştir. Ancak, bu sembollerin ötesine geçtiğimizde,
@@ -85,18 +113,40 @@
       renklerin birleşmesi ve çeşitliliğin kutlanması üzerine bir sanatsal
       keşiftir.
     </p>
-    <!-- Devam eden manifesto metni buraya yerleştirilecek -->
     <div class="button-container">
       <a id="exploreButton">Explore the Colors</a>
     </div>
 
     <script>
+      const title = document.getElementById("title");
+      const artistInfo = document.getElementById("artistInfo");
+      const manifesto = document.getElementById("manifesto");
       const exploreButton = document.getElementById("exploreButton");
-      exploreButton.addEventListener("click", function () {
-        // Body elementine fade-out class ekle
-        document.body.classList.add("fade-out");
 
-        // 1 saniye sonra (animasyon süresi kadar bekleyerek) yeni sayfaya yönlendir
+      document
+        .getElementById("btnTurkish")
+        .addEventListener("click", function () {
+          title.textContent = "The Unity of Colors";
+          artistInfo.innerHTML =
+            "<strong>Sanatçı:</strong> Kaan Kayaş <br /><strong>Tarih:</strong> 2024";
+          manifesto.textContent =
+            'Bayraklar, ulusal kimliklerin en güçlü simgelerindendir. Her bir bayrak, bir ülkenin tarihini, kültürünü ve değerlerini yansıtan renkler ve sembollerle bezenmiştir. Ancak, bu sembollerin ötesine geçtiğimizde, bayraklarda paylaşılan bir bütünlük, bir renk çeşitliliği göze çarpar. "The Unity of Colors" eseri, ulusal simgelerin kaldırıldığı bir dünyada, renklerin birleşmesi ve çeşitliliğin kutlanması üzerine bir sanatsal keşiftir.';
+          exploreButton.textContent = "Renkleri Keşfet";
+        });
+
+      document
+        .getElementById("btnEnglish")
+        .addEventListener("click", function () {
+          title.textContent = "The Unity of Colors";
+          artistInfo.innerHTML =
+            "<strong>Artist:</strong> Kaan Kayaş <br /><strong>Date:</strong> 2024";
+          manifesto.textContent =
+            "Flags are among the most powerful symbols of national identity. Each flag is adorned with colors and symbols that reflect a country's history, culture, and values. However, when we look beyond these symbols, we see a unity shared among flags, a diversity of colors. *The Unity of Colors* is an artistic exploration of the merging of colors and the celebration of diversity in a world where national symbols have been removed.";
+          exploreButton.textContent = "Explore the Colors";
+        });
+
+      exploreButton.addEventListener("click", function () {
+        document.body.classList.add("fade-out");
         setTimeout(function () {
           window.location.href = "flags.html";
         }, 1000);
