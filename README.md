@@ -4,7 +4,8 @@ https://the-unity-of-colors-a-study-of-national-flags-without-symbols.vercel.app
 
 ## Title: The Unity of Colors: A Study of National Flags Without Symbols
 
-**Artist:** Sabri Kaan Kayaş 
+**Artist:** Sabri Kaan Kayaş
+
 **Date:** 2024
 
 ### Introduction
